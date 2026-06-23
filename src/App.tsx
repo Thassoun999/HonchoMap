@@ -112,6 +112,15 @@ export default function App() {
   const markerPositionsRef = useRef<Record<string, THREE.Vector3>>({});
   const isCameraAnimating = useRef(false);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   // const ssaoColor = new THREE.Color("black");
   const [activeMarker, setActiveMarker] = useState<{
     id: string;
@@ -264,7 +273,7 @@ export default function App() {
               fov: 45,
               near: 0.1,
               far: 2000,
-              position: [0, 75, 105],
+              position: isMobile ? [0, 75, 150] : [0, 75, 105],
             }}
             style={{
               position: "fixed",
@@ -425,7 +434,7 @@ export default function App() {
             </button>
             <p
               style={{
-                fontSize: 15,
+                fontSize: isMobile ? 7.5 : 15,
                 color: "#605e5e",
                 marginBottom: 6,
                 textTransform: "uppercase",
@@ -438,7 +447,7 @@ export default function App() {
             <h2
               style={{
                 margin: "0 0 10px",
-                fontSize: 24,
+                fontSize: isMobile ? 12 : 24,
                 fontWeight: 700,
                 color: "#111",
                 lineHeight: 1.2,
@@ -449,7 +458,7 @@ export default function App() {
             <p
               style={{
                 margin: 0,
-                fontSize: 18,
+                fontSize: isMobile ? 9 : 18,
                 color: "#000",
                 lineHeight: 1.6,
                 whiteSpace: "pre-line",
