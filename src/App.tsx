@@ -273,7 +273,7 @@ export default function App() {
               fov: 45,
               near: 0.1,
               far: 2000,
-              position: isMobile ? [0, 100, 175] : [0, 75, 105],
+              position: isMobile ? [0, 115, 225] : [0, 75, 105],
             }}
             style={{
               position: "fixed",
