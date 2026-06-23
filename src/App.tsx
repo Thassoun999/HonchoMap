@@ -33,7 +33,7 @@ function KeyLight() {
       intensity={3.7 / 1.5}
       position={[-45.3, 47.1, 46.5]}
       castShadow
-      shadow-radius={6}
+      shadow-radius={5}
       shadow-bias={-0.00002}
       shadow-normalBias={0.05}
       shadow-mapSize={[4096, 4096]} // Map resolution -- the render of the scene from light's pov into a texture (shadow map)
@@ -106,7 +106,7 @@ export default function App() {
       shadows="soft"
     >
       <color attach="background" args={["#e1e1e1"]} />
-      <ambientLight intensity={2} color="#ffffff" />
+      <ambientLight intensity={1.8} color="#ffffff" />
       <KeyLight />
       <FillLight />
       <RimLight />

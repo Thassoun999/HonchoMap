@@ -99,7 +99,7 @@ export default function MapScene() {
               `#include <color_fragment>
               
               // Correct sRGB vertex colors to linear
-              diffuseColor.rgb = pow(diffuseColor.rgb, vec3(0.95));
+              diffuseColor.rgb = pow(diffuseColor.rgb, vec3(1));
 
               vec2 correctedUv = vec2(vUv2.x, 1.0 - vUv2.y);
               vec4 texColor = texture2D(pathTexture, correctedUv);
