@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import * as THREE from "three";
 import Instances from "./Instances";
 import River from "./River";
+import Markers from "./Markers";
 
 /*
  tells Drei to start downloading the GLB immediately when this module loads, before the component even renders. 
@@ -12,7 +13,22 @@ import River from "./River";
  */
 useGLTF.preload("/HonchoMap/assets/models/map_scene.glb");
 
-export default function MapScene() {
+interface MapSceneProps {
+  onMarkerClick: (marker: {
+    id: string;
+    name: string;
+    description: string;
+    category: string;
+  }) => void;
+  visibleMarkerIds: string[];
+  markerPositionsRef: React.RefObject<Record<string, THREE.Vector3>>;
+}
+
+export default function MapScene({
+  onMarkerClick,
+  visibleMarkerIds,
+  markerPositionsRef,
+}: MapSceneProps) {
   const { scene } = useGLTF("/HonchoMap/assets/models/map_scene.glb");
 
   useEffect(() => {
@@ -123,7 +139,7 @@ export default function MapScene() {
               const mat = child.material as THREE.MeshStandardMaterial;
               if (mat.name === "Rainbow Wood.002") {
                 // console.log("Found you!");
-                mat.color.setScalar(8);
+                mat.color.setScalar(12);
               }
             }
           },
@@ -137,6 +153,12 @@ export default function MapScene() {
       <primitive object={scene} />
       <Instances scene={scene} />
       <River />
+      <Markers
+        scene={scene}
+        onMarkerClick={onMarkerClick}
+        visibleMarkerIds={visibleMarkerIds}
+        markerPositionsRef={markerPositionsRef}
+      />
     </>
   );
 }
