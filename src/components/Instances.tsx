@@ -53,7 +53,7 @@ function MeshInstances({
       {meshes.map(
         (mesh, meshIndex) =>
           transforms
-            .map((transform, i) => {
+            .map((transform, _) => {
               const matrix = new THREE.Matrix4();
               matrix.compose(
                 transform.position,
