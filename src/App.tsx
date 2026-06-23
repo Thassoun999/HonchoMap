@@ -339,6 +339,43 @@ export default function App() {
             onToggleMenu={() => setMenuOpen((prev) => !prev)}
           />
 
+          <button
+            onClick={() => {
+              if (document.fullscreenElement) {
+                document.exitFullscreen();
+              } else {
+                document.documentElement.requestFullscreen();
+              }
+            }}
+            aria-label="Toggle fullscreen"
+            style={{
+              position: "fixed",
+              top: 16,
+              right: 16,
+              zIndex: 200,
+              width: 44,
+              height: 44,
+              borderRadius: 8,
+              background: "white",
+              border: "none",
+              cursor: "pointer",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.15)",
+              fontSize: 18,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              transition: "background 0.2s ease",
+            }}
+            onPointerEnter={(e) => {
+              (e.target as HTMLButtonElement).style.background = "#f0f0f0";
+            }}
+            onPointerLeave={(e) => {
+              (e.target as HTMLButtonElement).style.background = "white";
+            }}
+          >
+            ⛶
+          </button>
+
           <ArrowNav
             onPrev={handlePrev}
             onNext={handleNext}
