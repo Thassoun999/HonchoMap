@@ -6,6 +6,16 @@ const C2_MODELS: Record<string, string> = {
   Trees_2: "/HonchoMap/assets/models/tree_pine.glb",
   Trees_3: "/HonchoMap/assets/models/tree_birch.glb",
   Trees_1: "/HonchoMap/assets/models/tree_oak.glb",
+  Rock_1: "/HonchoMap/assets/models/rock_1.glb",
+  Rock_2: "/HonchoMap/assets/models/rock_2.glb",
+  Rock_3: "/HonchoMap/assets/models/rock_3.glb",
+  Tent_Regular: "/HonchoMap/assets/models/tent_regular.glb",
+  Tent_QFF: "/HonchoMap/assets/models/tent_qff.glb",
+  Tent_Access: "/HonchoMap/assets/models/tent_access.glb",
+  Tent_New: "/HonchoMap/assets/models/new_tent.glb",
+  RVs: "/HonchoMap/assets/models/rv_base.glb",
+  Grass: "/HonchoMap/assets/models/grass.glb",
+  "Blue Cars": "/HonchoMap/assets/models/car_base.glb",
 };
 
 interface InstancesProps {
@@ -67,6 +77,9 @@ function MeshInstances({
                 transforms.length,
               );
 
+              instancedMesh.castShadow = true;
+              instancedMesh.receiveShadow = true;
+
               transforms.forEach((t, idx) => {
                 const m = new THREE.Matrix4();
                 m.compose(
@@ -93,6 +106,16 @@ export default function Instances({ scene }: InstancesProps) {
     Trees_2: useGLTF(C2_MODELS.Trees_2).scene,
     Trees_3: useGLTF(C2_MODELS.Trees_3).scene,
     Trees_1: useGLTF(C2_MODELS.Trees_1).scene,
+    Rock_1: useGLTF(C2_MODELS.Rock_1).scene,
+    Rock_2: useGLTF(C2_MODELS.Rock_2).scene,
+    Rock_3: useGLTF(C2_MODELS.Rock_3).scene,
+    Tent_Regular: useGLTF(C2_MODELS.Tent_Regular).scene,
+    Tent_QFF: useGLTF(C2_MODELS.Tent_QFF).scene,
+    Tent_Access: useGLTF(C2_MODELS.Tent_Access).scene,
+    Tent_New: useGLTF(C2_MODELS.Tent_New).scene,
+    RVs: useGLTF(C2_MODELS.RVs).scene,
+    Grass: useGLTF(C2_MODELS.Grass).scene,
+    "Blue Cars": useGLTF(C2_MODELS["Blue Cars"]).scene,
   };
 
   // Collect transforms per instance_type

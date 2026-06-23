@@ -1,6 +1,8 @@
 import { useGLTF } from "@react-three/drei";
 import { useEffect } from "react";
 import * as THREE from "three";
+import Instances from "./Instances";
+import River from "./River";
 
 /*
  tells Drei to start downloading the GLB immediately when this module loads, before the component even renders. 
@@ -21,7 +23,11 @@ export default function MapScene() {
     pathTexture.colorSpace = THREE.SRGBColorSpace;
 
     scene.traverse((child) => {
+      // Each child is split amongst material names!
       if (child instanceof THREE.Mesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+
         if (child.name === "Ground") {
           const material = new THREE.MeshStandardMaterial({
             vertexColors: true, // important for vertex colors
@@ -92,23 +98,46 @@ export default function MapScene() {
               "#include <color_fragment>",
               `#include <color_fragment>
               
+              // Correct sRGB vertex colors to linear
+              diffuseColor.rgb = pow(diffuseColor.rgb, vec3(0.95));
+
               vec2 correctedUv = vec2(vUv2.x, 1.0 - vUv2.y);
               vec4 texColor = texture2D(pathTexture, correctedUv);
               
               float factor = clamp(length(texColor.rgb) / 1.732, 0.0, 1.0);
-              factor = smoothstep(0.05, 0.07, factor);
+              factor = smoothstep(0.05, .5, factor);
               
-              vec3 pathColor = vec3(0.596, 0.651, 0.435);
+              // vec3 pathColor = vec3(0.45, 0.38, 0.22);    
+              vec3 pathColor = vec3(0.38 * 1.37, 0.28 * 1.37, 0.14 * 1.37);               
               
-              diffuseColor.rgb = mix(diffuseColor.rgb, pathColor, factor);`,
+              diffuseColor.rgb = clamp(mix(diffuseColor.rgb, pathColor, factor), 0.0, 1.0);`,
             );
           };
 
           child.material = material;
         }
+
+        ["Bridge_Planks", "Bridge_Planks_1", "Bridge_Planks_2"].forEach(
+          (name) => {
+            if (child.name === name) {
+              const mat = child.material as THREE.MeshStandardMaterial;
+              if (mat.name === "Rainbow Wood.002") {
+                // console.log("Found you!");
+                mat.color.setScalar(8);
+              }
+            }
+          },
+        );
       }
     });
   }, [scene]);
 
-  return <primitive object={scene} />;
+  return (
+    <>
+      <primitive object={scene} />
+      <Instances scene={scene} />
+      <River />
+    </>
+  );
 }
+//castShadow receiveShadow
