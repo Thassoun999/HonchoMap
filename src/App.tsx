@@ -461,7 +461,7 @@ export default function App() {
             </button>
             <p
               style={{
-                fontSize: isMobile ? 7.5 : 15,
+                fontSize: isMobile ? 15 / 3 : 15,
                 color: "#605e5e",
                 marginBottom: 6,
                 textTransform: "uppercase",
@@ -474,7 +474,7 @@ export default function App() {
             <h2
               style={{
                 margin: "0 0 10px",
-                fontSize: isMobile ? 12 : 24,
+                fontSize: isMobile ? 24 / 3 : 24,
                 fontWeight: 700,
                 color: "#111",
                 lineHeight: 1.2,
@@ -485,7 +485,7 @@ export default function App() {
             <p
               style={{
                 margin: 0,
-                fontSize: isMobile ? 9 : 18,
+                fontSize: isMobile ? 18 / 3 : 18,
                 color: "#000",
                 lineHeight: 1.6,
                 whiteSpace: "pre-line",
