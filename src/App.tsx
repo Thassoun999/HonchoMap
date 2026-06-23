@@ -5,8 +5,8 @@ import { useRef } from "react"; // useEffect
 import MapScene from "./components/MapScene";
 import { useGLTF } from "@react-three/drei";
 
-import { EffectComposer, SSAO } from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
+// import { EffectComposer, SSAO, ToneMapping } from "@react-three/postprocessing";
+// import { BlendFunction, ToneMappingMode } from "postprocessing";
 
 useGLTF.setDecoderPath(
   "https://www.gstatic.com/draco/versioned/decoders/1.5.6/",
@@ -81,13 +81,13 @@ function RimLight() {
 }
 
 export default function App() {
-  const ssaoColor = new THREE.Color("black");
+  // const ssaoColor = new THREE.Color("black");
   return (
     <Canvas
       gl={{
         antialias: true, // smooths jagged edges
         toneMapping: THREE.ACESFilmicToneMapping, // how brightness/contrast is processed
-        toneMappingExposure: 1, // multiplier
+        toneMappingExposure: 0.8, // multiplier
         outputColorSpace: THREE.SRGBColorSpace, // color display
       }}
       camera={{
@@ -121,7 +121,8 @@ export default function App() {
       />
 
       <MapScene />
-      {/* Post processing — always last inside Canvas */}
+      {/* Post processing — always last inside Canvas 
+      
       <EffectComposer multisampling={0} enableNormalPass>
         <SSAO
           blendFunction={BlendFunction.MULTIPLY} // multiples AO result with scene color, darkens occluded area naturally
@@ -140,7 +141,9 @@ export default function App() {
           luminanceInfluence={0.3} // how much surface brightness affects the AO, lower = AO affect dark and bright areas equally
           color={ssaoColor} // the shadow color
         />
+        <ToneMapping mode={ToneMappingMode.ACES_FILMIC} exposure={1.2} />
       </EffectComposer>
+      */}
     </Canvas>
   );
 }
