@@ -5,6 +5,9 @@ import { useRef } from "react"; // useEffect
 import MapScene from "./components/MapScene";
 import { useGLTF } from "@react-three/drei";
 
+import { EffectComposer, SSAO } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
+
 useGLTF.setDecoderPath(
   "https://www.gstatic.com/draco/versioned/decoders/1.5.6/",
 );
@@ -78,6 +81,7 @@ function RimLight() {
 }
 
 export default function App() {
+  const ssaoColor = new THREE.Color("black");
   return (
     <Canvas
       gl={{
@@ -85,7 +89,6 @@ export default function App() {
         toneMapping: THREE.ACESFilmicToneMapping, // how brightness/contrast is processed
         toneMappingExposure: 1, // multiplier
         outputColorSpace: THREE.SRGBColorSpace, // color display
-        alpha: true,
       }}
       camera={{
         fov: 45,
@@ -102,6 +105,7 @@ export default function App() {
       }}
       shadows="soft"
     >
+      <color attach="background" args={["#e1e1e1"]} />
       <ambientLight intensity={2} color="#ffffff" />
       <KeyLight />
       <FillLight />
@@ -117,9 +121,30 @@ export default function App() {
       />
 
       <MapScene />
+      {/* Post processing — always last inside Canvas */}
+      <EffectComposer multisampling={0} enableNormalPass>
+        <SSAO
+          blendFunction={BlendFunction.MULTIPLY} // multiples AO result with scene color, darkens occluded area naturally
+          samples={32} // how many rays are cast to calculate occlusion (higher = better but more expensive)
+          radius={30} // how far the AO effect reaches, small gives tight contact shadows while large give broader ambient darkening
+          intensity={15} // how strong the darkening effect
+          rings={4} // how many concentric rings of sample points are cast around each pixel. More rings = better quality
+          distanceThreshold={1.0} // maximum worl space distance at which occlusion is calculated. The "reach", within 1 world unit coords
+          distanceFalloff={0.0} // how gradually the occlusion fades out as the geometry approaches distance threshold. 0 means hard cut off
+          rangeThreshold={0.5} //Similar to distanceThreshold but specifically for the depth range — filters out samples that are too far in depth from the current pixel to be considered occluders.
+          // Prevents incorrect darkening from distant background geometry.
+          rangeFalloff={0.1} // How gradually the range check fades. Small value like 0.1 means a fairly sharp cutoff —
+          // geometry either counts as an occluder or it doesn't with minimal blending between.
+
+          bias={0.5} // prevents self-occlusion artifacts. Without it flat surfaces can incorrectly occlude themselves and darken everything
+          luminanceInfluence={0.3} // how much surface brightness affects the AO, lower = AO affect dark and bright areas equally
+          color={ssaoColor} // the shadow color
+        />
+      </EffectComposer>
     </Canvas>
   );
 }
-//      <color attach="background" args={["white"]} />
-
-// <ambientLight intensity={0.3} color="#ffffff" />
+/*
+For tighter contact shadows reduce radius, for broader keep it where it is. 
+For more/less intensity adjust intensity and luminanceInfluence together.
+*/
