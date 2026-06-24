@@ -236,26 +236,26 @@ export default function App() {
             onClick={() => setStarted(true)}
             style={{
               padding: "12px 32px",
-              fontSize: isMobile ? 30 : 40,
+              fontSize: isMobile ? 30 : 50,
               fontWeight: 600,
-              background: "#04800d",
-              color: "white",
-              border: "none",
+              background: "#f2f0e2",
+              color: "black",
+              border: "solid 2px",
               borderRadius: 8,
               cursor: "pointer",
               transition: "background 0.2s ease",
             }}
             onPointerEnter={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#06ac11";
+              (e.target as HTMLButtonElement).style.background = "#f0efe8";
             }}
             onPointerLeave={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#04800d";
+              (e.target as HTMLButtonElement).style.background = "#f2f0e2";
             }}
             onPointerDown={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#09dc17";
+              (e.target as HTMLButtonElement).style.background = "#e8e5cc";
             }}
             onPointerUp={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#444";
+              (e.target as HTMLButtonElement).style.background = "#f0efe8";
             }}
           >
             Explore 3D Map
