@@ -31,6 +31,8 @@ const MARKER_SPRITES: Record<string, string> = {
   small_shower: "/HonchoMap/assets/markers/ToiletShowers.png",
   the_grove: "/HonchoMap/assets/markers/Grove.png",
   car_camping: "/HonchoMap/assets/markers/CarCamping.png",
+  parking: "/HonchoMap/assets/markers/Parking.png",
+  gate: "/HonchoMap/assets/markers/Gate.png",
 };
 
 // Remove LARGE_MARKERS — scale now comes from MARKER_DATA

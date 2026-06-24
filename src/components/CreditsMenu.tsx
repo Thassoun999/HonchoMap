@@ -54,6 +54,7 @@ export default function CreditsMenu({
             padding: "12px 16px",
             boxShadow: "0 4px 24px rgba(0,0,0,0.15)",
             minWidth: 200,
+            opacity: 0.9,
           }}
         >
           <p

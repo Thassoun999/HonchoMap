@@ -259,7 +259,7 @@ export const MARKER_DATA: Record<
     description: "",
     category: "Amenities",
     markerType: "bar",
-    offset: [0.5, 0.5, -0.5],
+    offset: [0.5, 0.5, -0.25],
     scale: 0.75,
   },
   Bar_2: {
@@ -275,7 +275,7 @@ export const MARKER_DATA: Record<
     description: "",
     category: "Amenities",
     markerType: "portapotties",
-    offset: [0, 0, -0.75],
+    offset: [0, 0, -0.3],
     scale: 0.5,
   },
   Porta_Potties_2: {
@@ -284,6 +284,30 @@ export const MARKER_DATA: Record<
     category: "Amenities",
     markerType: "portapotties",
     offset: [1, 0, 3.5],
+    scale: 0.5,
+  },
+  Porta_Potties_3: {
+    name: "Porta Potties - Old Growth Forest",
+    description: "",
+    category: "Amenities",
+    markerType: "portapotties",
+    offset: [0, -0.5, -0.25],
+    scale: 0.5,
+  },
+  Porta_Potties_4: {
+    name: "Porta Potties - Rainbow bridge",
+    description: "",
+    category: "Amenities",
+    markerType: "portapotties",
+    offset: [0, 0.75, -0.25],
+    scale: 0.5,
+  },
+  Porta_Potties_4001: {
+    name: "Porta Potties - High Meadow",
+    description: "",
+    category: "Amenities",
+    markerType: "portapotties",
+    offset: [0, 0.25, 0],
     scale: 0.5,
   },
   Wellness_1: {
@@ -315,7 +339,7 @@ export const MARKER_DATA: Record<
     description: `Icy treats for a world on fire! Born on a New Orleans porch during 2020 by queer married drag/burlesque duo Kitten N' Lou, Chance In Hell SnoBalls has a cult following as an obsession-worthy community hub.`,
     category: "Amenities",
     markerType: "chance_in_sno",
-    offset: [0.75, 0.5, -0.25],
+    offset: [0.5, 0.5, 0.15],
     scale: 0.75,
   },
   Food_Court: {
@@ -459,5 +483,39 @@ export const MARKER_DATA: Record<
     markerType: "new_camp",
     offset: [0, 1, 0],
     scale: 2.5,
+  },
+
+  Gate_Main: {
+    name: "Main Camp Gate",
+    description: "",
+    category: "Areas",
+    markerType: "gate",
+    offset: [0, 1.25, 0],
+    scale: 1,
+  },
+  Gate_New: {
+    name: "New Camp Gate",
+    description: "",
+    category: "Areas",
+    markerType: "gate",
+    offset: [0, 0.5, 0.2],
+    scale: 1,
+  },
+
+  Parking_Main: {
+    name: "Main Camp Parking",
+    description: "",
+    category: "Areas",
+    markerType: "parking",
+    offset: [0, 0.5, 0],
+    scale: 1,
+  },
+  Parking_New: {
+    name: "New Camp Parking",
+    description: "",
+    category: "Areas",
+    markerType: "parking",
+    offset: [0, 2, 0],
+    scale: 1,
   },
 };

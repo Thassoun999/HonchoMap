@@ -229,15 +229,16 @@ export default function App() {
             alignItems: "center",
             justifyContent: "center",
             zIndex: 1000,
+            paddingInline: "1rem",
           }}
         >
           <button
             onClick={() => setStarted(true)}
             style={{
               padding: "12px 32px",
-              fontSize: 40,
+              fontSize: isMobile ? 30 : 40,
               fontWeight: 600,
-              background: "#111",
+              background: "#04800d",
               color: "white",
               border: "none",
               borderRadius: 8,
@@ -245,20 +246,92 @@ export default function App() {
               transition: "background 0.2s ease",
             }}
             onPointerEnter={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#444";
+              (e.target as HTMLButtonElement).style.background = "#06ac11";
             }}
             onPointerLeave={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#111";
+              (e.target as HTMLButtonElement).style.background = "#04800d";
             }}
             onPointerDown={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#888";
+              (e.target as HTMLButtonElement).style.background = "#09dc17";
             }}
             onPointerUp={(e) => {
               (e.target as HTMLButtonElement).style.background = "#444";
             }}
           >
-            Explore Map
+            Explore 3D Map
           </button>
+          <div
+            style={{
+              padding: "20px 40px",
+              fontSize: isMobile ? 15 : 25,
+              fontWeight: 300,
+              background: "#3e3e3e",
+              color: "white",
+              border: "none",
+              borderRadius: 8,
+              marginBlockStart: "1rem",
+            }}
+          >
+            <h2>Instructions</h2>
+            {isMobile ? (
+              <div style={{ marginBlockStart: "0.5rem" }}>
+                <p>
+                  <b>Rotate</b> with Swipe Motion and <b>Pan</b> with Double
+                  Finger Swipe Motion.
+                </p>
+                <p>
+                  Use Scroll Functionality to <b>Zoom In</b> and <b>Zoom Out</b>
+                  .
+                </p>
+              </div>
+            ) : (
+              <div style={{ marginBlockStart: "0.5rem" }}>
+                <p>
+                  <b>Rotate</b> with Left Mouse Button and <b>Pan</b> with Right
+                  Mouse Button.
+                </p>
+                <p>
+                  Use Scroll Functionality to <b>Zoom In</b> and <b>Zoom Out</b>
+                  .
+                </p>
+              </div>
+            )}
+
+            {isMobile ? (
+              <div style={{ marginBlockStart: "1rem" }}>
+                <p>
+                  Tap on <b>Markers</b> to learn more information about a point
+                  of interest.
+                </p>
+                <p>
+                  Alternatively you can use the arrow icons to navigate between{" "}
+                  <b>Markers</b>.
+                </p>
+              </div>
+            ) : (
+              <div style={{ marginBlockStart: "1rem" }}>
+                <p>
+                  Click on <b>Markers</b> to learn more information about a
+                  point of interest.
+                </p>
+                <p>
+                  Alternatively you can use the arrow icons (or arrow keys) to
+                  navigate between <b>Markers</b>.
+                </p>
+              </div>
+            )}
+
+            <div style={{ marginBlockStart: "1rem" }}>
+              <p>
+                The <b>Filter Menu</b> on the top left can be used to filter{" "}
+                <b>Markers</b> by Category.
+              </p>
+              <p>
+                This interactive 3D experience can be used with common{" "}
+                <b>Web Accessibility (WCAG 2.2) Tools</b>.
+              </p>
+            </div>
+          </div>
         </div>
       ) : (
         <>
@@ -296,7 +369,7 @@ export default function App() {
               enablePan={true}
               enableZoom={true}
               enableRotate={true}
-              minDistance={20}
+              minDistance={5}
               maxDistance={500}
               maxPolarAngle={Math.PI / 2.5}
               ref={controlsRef}
@@ -422,7 +495,7 @@ export default function App() {
               boxShadow: "0 4px 32px rgba(0,0,0,0.18)",
               zIndex: 100,
               width: "min(600px, 90vw)", // wider, but responsive on mobile
-              opacity: activeMarker ? 1 : 0,
+              opacity: activeMarker ? 0.9 : 0,
               pointerEvents: activeMarker ? "auto" : "none",
               transition: "opacity 0.15s ease",
             }}
