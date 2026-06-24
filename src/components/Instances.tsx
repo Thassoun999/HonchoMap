@@ -16,6 +16,7 @@ const C2_MODELS: Record<string, string> = {
   RVs: "/HonchoMap/assets/models/rv_base.glb",
   Grass: "/HonchoMap/assets/models/grass.glb",
   "Blue Cars": "/HonchoMap/assets/models/car_base.glb",
+  Glamping: "/HonchoMap/assets/models/glamping.glb",
 };
 
 interface InstancesProps {
@@ -116,6 +117,7 @@ export default function Instances({ scene }: InstancesProps) {
     RVs: useGLTF(C2_MODELS.RVs).scene,
     Grass: useGLTF(C2_MODELS.Grass).scene,
     "Blue Cars": useGLTF(C2_MODELS["Blue Cars"]).scene,
+    Glamping: useGLTF(C2_MODELS.Glamping).scene,
   };
 
   // Collect transforms per instance_type

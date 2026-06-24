@@ -115,17 +115,17 @@ export default function MapScene({
               `#include <color_fragment>
               
               // Correct sRGB vertex colors to linear
-              diffuseColor.rgb = pow(diffuseColor.rgb, vec3(1));
+              diffuseColor.rgb = pow(diffuseColor.rgb, vec3(1.02));
 
               vec2 correctedUv = vec2(vUv2.x, 1.0 - vUv2.y);
               vec4 texColor = texture2D(pathTexture, correctedUv);
               
               float factor = clamp(length(texColor.rgb) / 1.732, 0.0, 1.0);
-              factor = smoothstep(0.05, .5, factor);
+              factor = smoothstep(0.1, .7, factor);
               
               // vec3 pathColor = vec3(0.45, 0.38, 0.22);    
-              vec3 pathColor = vec3(0.38 * 1.37, 0.28 * 1.37, 0.14 * 1.37);               
-              
+              // vec3 pathColor = vec3(0.48, 0.38, 0.24);  
+              vec3 pathColor = vec3(0.503, 0.542, 0.244);              
               diffuseColor.rgb = clamp(mix(diffuseColor.rgb, pathColor, factor), 0.0, 1.0);`,
             );
           };
