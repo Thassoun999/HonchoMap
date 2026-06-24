@@ -225,8 +225,8 @@ export const MARKER_DATA: Record<
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
-    offset: [0, 2, 0],
-    scale: 1,
+    offset: [0, -1, 0],
+    scale: 0.75,
   },
   Queeries_Drop: {
     name: "Queeries Drop",
@@ -371,8 +371,8 @@ export const MARKER_DATA: Record<
     description: `Located just outside Critter's Lounge, this is New Camp's Coffee & Espresso Bar, also featuring à la Carte snacks, Specialty Drinks, late night food.`,
     category: "Amenities",
     markerType: "pick_me_up",
-    offset: [0, 2, 0],
-    scale: 1,
+    offset: [0, -1.5, 0.25],
+    scale: 0.75,
   },
 
   // Stages
