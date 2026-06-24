@@ -133,6 +133,19 @@ export default function CreditsMenu({
               SketchFab Link
             </a>
           </p>
+
+          <p
+            style={{
+              margin: "0 0 12px",
+              fontSize: 14,
+              color: "#4c4b4b",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
+            }}
+          >
+            Progress Flag Design by Daniel Quasar
+          </p>
         </div>
       )}
     </div>
