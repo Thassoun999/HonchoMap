@@ -21,6 +21,7 @@ import { MARKER_DATA } from "./constants/markerData";
 import BurgerMenu from "./components/BurgerMenu";
 import ArrowNav from "./components/ArrowNav";
 import LoadingScreen from "./components/LoadingScreen";
+import CreditsMenu from "./components/CreditsMenu";
 
 const ALL_MARKER_IDS = Object.keys(MARKER_DATA);
 const ALL_CATEGORIES = [
@@ -132,6 +133,7 @@ export default function App() {
   ]);
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [creditsOpen, setCreditsOpen] = useState(false);
 
   const visibleMarkerIds = useMemo(() => {
     return ALL_MARKER_IDS.filter((id) =>
@@ -316,13 +318,21 @@ export default function App() {
             {/* Post processing — always last inside Canvas */}
           </Canvas>
 
-          <BurgerMenu
-            categories={ALL_CATEGORIES}
-            activeFilters={activeFilters}
-            onToggleFilter={toggleFilter}
-            isOpen={menuOpen}
-            onToggleMenu={() => setMenuOpen((prev) => !prev)}
-          />
+          <div style={{ position: "fixed", top: 16, left: 16, zIndex: 200 }}>
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <BurgerMenu
+                categories={ALL_CATEGORIES}
+                activeFilters={activeFilters}
+                onToggleFilter={toggleFilter}
+                isOpen={menuOpen}
+                onToggleMenu={() => setMenuOpen((prev) => !prev)}
+              />
+              <CreditsMenu
+                isOpen={creditsOpen}
+                onToggleMenu={() => setCreditsOpen((prev) => !prev)}
+              />
+            </div>
+          </div>
 
           {isMobile ? (
             <a

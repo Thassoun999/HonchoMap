@@ -15,7 +15,7 @@ export default function BurgerMenu({
 }: BurgerMenuProps) {
   return (
     <div
-      style={{ position: "fixed", top: 16, left: 16, zIndex: 200 }}
+      style={{ zIndex: 200 }}
       onKeyDown={(e) => {
         if (e.key === "Escape" && isOpen) onToggleMenu();
       }}
@@ -60,6 +60,7 @@ export default function BurgerMenu({
           role="group"
           aria-label="Filter markers by category"
           style={{
+            position: "absolute",
             marginTop: 8,
             background: "white",
             borderRadius: 12,

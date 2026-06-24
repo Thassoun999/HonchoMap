@@ -26,7 +26,7 @@ const MARKER_SPRITES: Record<string, string> = {
   large_shower: "/HonchoMap/assets/markers/ToiletShowers.png",
   mail_room: "/HonchoMap/assets/markers/Mail.png",
   pick_me_up: "/HonchoMap/assets/markers/PickMeUp.png",
-  qff: "/HonchoMap/assets/markers/Camping.png",
+  qff: "/HonchoMap/assets/markers/QFF.png",
   "queeries.001": "/HonchoMap/assets/markers/Queeries.png",
   small_shower: "/HonchoMap/assets/markers/ToiletShowers.png",
   the_grove: "/HonchoMap/assets/markers/Grove.png",
@@ -35,7 +35,7 @@ const MARKER_SPRITES: Record<string, string> = {
 
 // Remove LARGE_MARKERS — scale now comes from MARKER_DATA
 
-const BASE_WIDTH = 3;
+const BASE_WIDTH = 2.25; // was  3
 const BASE_HEIGHT = BASE_WIDTH * (500 / 390);
 
 interface MarkerData {
@@ -144,7 +144,11 @@ export default function Markers({
       if (!visibleMarkerIds.includes(child.name)) return;
 
       if (markerPositionsRef.current) {
-        markerPositionsRef.current[child.name] = child.position.clone();
+        markerPositionsRef.current[child.name] = new THREE.Vector3(
+          child.position.x + data.offset[0],
+          child.position.y + data.offset[1],
+          child.position.z + data.offset[2],
+        );
       }
 
       result.push({
