@@ -66,13 +66,15 @@ export default function MapScene({
             shader.vertexShader = shader.vertexShader.replace(
               "void main() {",
               `varying vec2 vUv2;
+               varying vec3 vNormal2;
               void main() {`,
             );
 
             shader.vertexShader = shader.vertexShader.replace(
               "#include <uv_vertex>",
               `#include <uv_vertex>
-              vUv2 = uv;`,
+              vUv2 = uv;
+              vNormal2 = normalize(normalMatrix * normal);`,
             );
 
             // Fragment shader declaration — adds the uniform and varying declarations to the fragment shader
@@ -85,6 +87,7 @@ export default function MapScene({
               "void main() {",
               `uniform sampler2D pathTexture;
               varying vec2 vUv2;
+              varying vec3 vNormal2;
               void main() {`,
             );
 
@@ -126,7 +129,14 @@ export default function MapScene({
               // vec3 pathColor = vec3(0.45, 0.38, 0.22);    
               // vec3 pathColor = vec3(0.48, 0.38, 0.24);  
               vec3 pathColor = vec3(0.503, 0.542, 0.244);              
-              diffuseColor.rgb = clamp(mix(diffuseColor.rgb, pathColor, factor), 0.0, 1.0);`,
+              diffuseColor.rgb = clamp(mix(diffuseColor.rgb, pathColor, factor), 0.0, 1.0);
+              
+              // Elevation edge darkening — faces pointing up stay bright, cliff faces darken
+              float elevation = dot(vNormal2, vec3(0.0, 1.0, 0.0));
+              elevation = clamp(elevation, 0.0, 1.0);
+              float darkenFactor = mix(0.4, 1.0, elevation);
+              diffuseColor.rgb *= darkenFactor;
+              `,
             );
           };
 
