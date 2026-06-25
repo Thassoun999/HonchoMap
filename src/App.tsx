@@ -13,6 +13,8 @@ import MapScene from "./components/MapScene";
 import { useGLTF } from "@react-three/drei";
 import CameraController from "./components/CameraController";
 
+import "./App.css";
+
 // import { EffectComposer, SSAO } from "@react-three/postprocessing";
 // import { BlendFunction } from "postprocessing";
 
@@ -234,28 +236,19 @@ export default function App() {
         >
           <button
             onClick={() => setStarted(true)}
+            className="button-interact"
             style={{
-              padding: "12px 32px",
-              fontSize: isMobile ? 30 : 50,
+              padding: "12px 42px",
+              fontSize: isMobile ? 30 : 60,
               fontWeight: 600,
-              background: "#f2f0e2",
-              color: "black",
-              border: "solid 2px",
-              borderRadius: 8,
+              background:
+                "linear-gradient(to right, #2db885, #22c55e, #0d9488)",
+              color: "white",
+              border: "none",
+              borderRadius: 32,
               cursor: "pointer",
-              transition: "background 0.2s ease",
-            }}
-            onPointerEnter={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#f0efe8";
-            }}
-            onPointerLeave={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#f2f0e2";
-            }}
-            onPointerDown={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#e8e5cc";
-            }}
-            onPointerUp={(e) => {
-              (e.target as HTMLButtonElement).style.background = "#f0efe8";
+              boxShadow:
+                "4px 4px 12px rgba(0,0,0,0.5), -.1px -.1px 8px rgba(0,0,0,0.15 )",
             }}
           >
             Explore 3D Map
@@ -265,11 +258,13 @@ export default function App() {
               padding: "20px 40px",
               fontSize: isMobile ? 15 : 25,
               fontWeight: 300,
-              background: "#3e3e3e",
+              background: "radial-gradient( #747272 5%, #3e3e3e)",
               color: "white",
               border: "none",
               borderRadius: 8,
-              marginBlockStart: "1rem",
+              marginBlockStart: isMobile ? "1rem" : "2rem",
+              boxShadow:
+                "8px 8px 14px rgba(0,0,0,0.25),  -4px -4px 18px rgba(0,0,0,0.25)",
             }}
           >
             <h2>Instructions</h2>

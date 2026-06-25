@@ -1,0 +1,11 @@
+.button-interact {
+  transition: transform 0.2s ease;
+}
+
+.button-interact:hover {
+  transform: scale(1.015);
+}
+
+.button-interact:active {
+  transform: translateY(4px);
+}
