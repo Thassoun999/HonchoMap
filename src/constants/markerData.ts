@@ -127,7 +127,7 @@ export const MARKER_DATA: Record<
     description: "",
     category: "Camping & Lodging",
     markerType: "rv_camping",
-    offset: [0, 2, 0],
+    offset: [-1, 1.75, -2.5],
     scale: 1,
   },
   RV_Camping001: {
@@ -135,7 +135,7 @@ export const MARKER_DATA: Record<
     description: "",
     category: "Camping & Lodging",
     markerType: "rv_camping",
-    offset: [0, 1, 0],
+    offset: [1.75, 0.75, 7.5],
     scale: 1,
   },
   Car_Camping: {
@@ -155,7 +155,7 @@ export const MARKER_DATA: Record<
     scale: 1,
   },
   QFF: {
-    name: "QFF",
+    name: "QFF Camp",
     description: "",
     category: "Camping & Lodging",
     markerType: "qff",
@@ -165,7 +165,7 @@ export const MARKER_DATA: Record<
 
   // Ride Cher
   Big_Bottom_Drop: {
-    name: "Big Bottom Drop",
+    name: "Big Bottom Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -173,7 +173,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Circle_Drop: {
-    name: "Circle Drop",
+    name: "Circle Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -181,7 +181,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Food_Court_Drop: {
-    name: "Food Court Drop",
+    name: "Food Court Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -189,7 +189,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Hemlock_Drop: {
-    name: "Hemlock Drop",
+    name: "Hemlock Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -197,7 +197,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   High_Meadow_Drop: {
-    name: "High Meadow Drop",
+    name: "High Meadow Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -205,7 +205,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Large_Shower_Drop: {
-    name: "Large Shower Drop",
+    name: "Large Shower Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -213,7 +213,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Lil_Bottom_Drop: {
-    name: "Lil Bottom Drop",
+    name: "Lil Bottom Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -221,7 +221,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   North_Crook_Drop: {
-    name: "North Crook Drop",
+    name: "North Crook Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -229,7 +229,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Queeries_Drop: {
-    name: "Queeries Drop",
+    name: "Queeries Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -237,7 +237,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Rainbow_Bridge_Drop: {
-    name: "Rainbow Bridge Drop",
+    name: "Rainbow Bridge Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -245,7 +245,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Shady_Pines_Drop: {
-    name: "Shady Pines Drop",
+    name: "Shady Pines Stop",
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
@@ -312,7 +312,7 @@ export const MARKER_DATA: Record<
   },
   Wellness_1: {
     name: "Harm Reduction Tent - Main Camp",
-    description: `Harm Reduction now has a dedicated location for you to do spectrometer testing on Wednesday & Thursday, reagent teseting, and to pick up safer sex and safer usage kits.`,
+    description: `Harm Reduction now has a dedicated location for you to do spectrometer testing on Wednesday & Thursday, reagent testing, and to pick up safer sex and safer usage kits.`,
     category: "Health & Wellness",
     markerType: "wellness",
     offset: [0.25, -0.25, -0.25],
@@ -320,7 +320,7 @@ export const MARKER_DATA: Record<
   },
   Wellness_2: {
     name: "Harm Reduction Tent - New Camp",
-    description: `Harm Reduction now has a dedicated location for you to do spectrometer testing on Wednesday & Thursday, reagent teseting, and to pick up safer sex and safer usage kits.`,
+    description: `Harm Reduction now has a dedicated location for you to do spectrometer testing on Wednesday & Thursday, reagent testing, and to pick up safer sex and safer usage kits.`,
     category: "Health & Wellness",
     markerType: "wellness",
     offset: [0.15, 0.35, -0.35],
@@ -491,7 +491,7 @@ export const MARKER_DATA: Record<
     category: "Areas",
     markerType: "gate",
     offset: [0, 1.25, 0],
-    scale: 1,
+    scale: 2,
   },
   Gate_New: {
     name: "New Camp Gate",
@@ -499,7 +499,7 @@ export const MARKER_DATA: Record<
     category: "Areas",
     markerType: "gate",
     offset: [0, 0.5, 0.2],
-    scale: 1,
+    scale: 2,
   },
 
   Parking_Main: {

@@ -225,7 +225,7 @@ export default function App() {
           style={{
             position: "fixed",
             inset: 0,
-            background: "#e1e1e1",
+            background: "linear-gradient(to right, #ffc6df,  #60b9fc)",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -241,8 +241,7 @@ export default function App() {
               padding: "12px 42px",
               fontSize: isMobile ? 30 : 60,
               fontWeight: 600,
-              background:
-                "linear-gradient(to right, #2db885, #22c55e, #0d9488)",
+              background: "linear-gradient(to right, #378fd3, #d58caa)",
               color: "white",
               border: "none",
               borderRadius: 32,
@@ -257,8 +256,8 @@ export default function App() {
             style={{
               padding: "20px 40px",
               fontSize: isMobile ? 15 : 25,
-              fontWeight: 300,
-              background: "radial-gradient( #747272 5%, #3e3e3e)",
+              fontWeight: 350,
+              background: "radial-gradient( #86577d 5%, #535689)",
               color: "white",
               border: "none",
               borderRadius: 8,
