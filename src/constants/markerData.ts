@@ -518,4 +518,12 @@ export const MARKER_DATA: Record<
     offset: [0, 2, 0],
     scale: 1,
   },
+  Salvage: {
+    name: "Dumpsters & Salvage",
+    description: "",
+    category: "Areas",
+    markerType: "salvage",
+    offset: [0, -0.5, 0],
+    scale: 0.75,
+  },
 };
