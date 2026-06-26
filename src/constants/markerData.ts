@@ -490,7 +490,7 @@ export const MARKER_DATA: Record<
     description: "",
     category: "Areas",
     markerType: "gate",
-    offset: [0, 1.25, 0],
+    offset: [0, 3, 0],
     scale: 2,
   },
   Gate_New: {
@@ -498,7 +498,7 @@ export const MARKER_DATA: Record<
     description: "",
     category: "Areas",
     markerType: "gate",
-    offset: [0, 0.5, 0.2],
+    offset: [0, 1.5, 0.2],
     scale: 2,
   },
 
