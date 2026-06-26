@@ -217,6 +217,7 @@ export default function App() {
     );
   }, []);
 
+  /*
   const backgroundTexture = useMemo(() => {
     const canvas = document.createElement("canvas");
     canvas.width = 2;
@@ -229,6 +230,34 @@ export default function App() {
     ctx.fillRect(0, 0, 2, 1);
     const texture = new THREE.CanvasTexture(canvas);
     texture.colorSpace = THREE.SRGBColorSpace; // add this
+    return texture;
+  }, []);
+  */
+
+  const backgroundTexture = useMemo(() => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 256; // increase resolution for radial gradient quality
+    canvas.height = 256;
+    const ctx = canvas.getContext("2d")!;
+
+    // createRadialGradient(x0, y0, r0, x1, y1, r1)
+    // x0, y0 = center of inner circle
+    // r0 = radius of inner circle (0 = point)
+    // x1, y1 = center of outer circle (same as inner for concentric)
+    // r1 = radius of outer circle — controls how far gradient spreads
+    const gradient = ctx.createRadialGradient(128, 128, 0, 128, 128, 180);
+
+    // addColorStop(position, color)
+    // position is 0.0 to 1.0 — 0 = center, 1 = outer edge (r1)
+    // add more stops between 0 and 1 to control color transition points
+    gradient.addColorStop(0, "#FFCBA4"); // 0% — light cantaloupe center
+    gradient.addColorStop(0.15, "#FFCBA4"); // 30% — hold cantaloupe until here
+    gradient.addColorStop(1, "#d4eeff"); // 100% — light sky blue outer edge
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 256, 256);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
     return texture;
   }, []);
 
@@ -366,8 +395,8 @@ export default function App() {
             }}
             shadows="soft"
           >
-            {/*<color attach="background" args={["#e1e1e1"]} />*/}
             <primitive object={backgroundTexture} attach="background" />
+            {/* <color attach="background" args={["#ede8cb"]} /> <primitive object={backgroundTexture} attach="background" /> */}
 
             <ambientLight intensity={0.35} color="#fff8e7" />
             <KeyLight />

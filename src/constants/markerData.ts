@@ -79,7 +79,7 @@ export const MARKER_DATA: Record<
     description: "",
     category: "Camping & Lodging",
     markerType: "camping",
-    offset: [0, 1, 0],
+    offset: [-4.75, 1, -1],
     scale: 1,
   },
   Big_Bottom: {
@@ -310,24 +310,16 @@ export const MARKER_DATA: Record<
     offset: [0, 0.25, 0],
     scale: 0.5,
   },
-  Wellness_1: {
-    name: "Harm Reduction Tent - Main Camp",
-    description: `Harm Reduction now has a dedicated location for you to do spectrometer testing on Wednesday & Thursday, reagent testing, and to pick up safer sex and safer usage kits.`,
-    category: "Health & Wellness",
-    markerType: "wellness",
-    offset: [0.25, -0.25, -0.25],
-    scale: 0.75,
-  },
   Wellness_2: {
-    name: "Harm Reduction Tent - New Camp",
-    description: `Harm Reduction now has a dedicated location for you to do spectrometer testing on Wednesday & Thursday, reagent testing, and to pick up safer sex and safer usage kits.`,
+    name: "Wellness - New Camp",
+    description: `Wellness & Chill tents are staffed by medical professionals who are here to help. If you need first aid, charge on your CPAP, start to feel ill, or just need a breather from the chaos, find a Wellness Tent and communicate your needs to the staff.`,
     category: "Health & Wellness",
     markerType: "wellness",
     offset: [0.15, 0.35, -0.35],
     scale: 0.75,
   },
   Wellness_3: {
-    name: "Wellness",
+    name: "Wellness - Main Camp",
     description: `Wellness & Chill tents are staffed by medical professionals who are here to help. If you need first aid, charge on your CPAP, start to feel ill, or just need a breather from the chaos, find a Wellness Tent and communicate your needs to the staff.`,
     category: "Health & Wellness",
     markerType: "wellness",
@@ -359,15 +351,23 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Kitchen: {
-    name: "Kitchen",
+    name: "Kitchen (CK2)",
     description: "",
     category: "Amenities",
     markerType: "kitchen",
-    offset: [1.5, -0.5, -0.75],
+    offset: [-0.5, -0.5, 0.75],
+    scale: 0.75,
+  },
+  Kitchen001: {
+    name: "Kitchen (CK1)",
+    description: "",
+    category: "Amenities",
+    markerType: "kitchen",
+    offset: [0, 2, 0],
     scale: 0.75,
   },
   Large_Shower: {
-    name: "Large Shower",
+    name: "Upper Showers & Flush Toilets",
     description: `Restrooms with flushing toilet stalls and sinks. \n Also featuring 8 private shower stalls requiring shower tokens.`,
     category: "Amenities",
     markerType: "large_shower",
@@ -375,7 +375,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Small_Shower: {
-    name: "Small Shower",
+    name: "Lower Showers & Flush Toilets",
     description: `Restrooms with flushing toilet stalls and sinks. \n Also featuring 2 private shower stalls and 4 group shower stalls requiring shower tokens.`,
     category: "Amenities",
     markerType: "small_shower",
@@ -435,7 +435,7 @@ export const MARKER_DATA: Record<
 
   // Health & Wellness
   Sober_Space_Library: {
-    name: "Library",
+    name: "Library - Sober Space",
     description: `The Library is a new addition to Campout, acting as a "third space" for folks looking to relax and engage in queer community at a slower speed. It also serves as a Sober Space meetup location. You'll find all types of essential queer literature – from activism to afrofuturism, ecology, and even vintage porn mags. It also offers intimate once-daily talks, readings and workshops related to literature we'll have on hand.`,
     category: "Health & Wellness",
     markerType: "sober_space",
@@ -443,7 +443,7 @@ export const MARKER_DATA: Record<
     scale: 0.75,
   },
   Sober_Space_Meadow: {
-    name: "Sober Space - Meadow",
+    name: "Meadow - Sober Space",
     description: `Sober folks, people in recovery, or anyone on the substance-free spectrum: check out the sober spaces for twice-daily meetings, mutual support, and bulletin boards to make connections. Enjoy your first or tenth sober Honcho! Meeting info is posted at both the sober spaces and Queeries. For more information, please reach out to chance.krempasky@gmail.com`,
     category: "Health & Wellness",
     markerType: "sober_space",
@@ -458,11 +458,21 @@ export const MARKER_DATA: Record<
     offset: [0, 2.5, 0],
     scale: 0.75,
   },
-  Queeries001: {
+  // Swap with Queeries (I need location even if I have mismatch)
+  Wellness_1: {
     name: "Queeries",
     description: `Queeries is Campout's Help Desk. Have a general question, need help with your wristband, want to charge your phone, or have a public message to post on a board? Queeries is the spot.`,
     category: "Health & Wellness",
     markerType: "queeries.001",
+    offset: [0.25, -0.25, -0.25],
+    scale: 0.75,
+  },
+  // Swap with Harm Reduction
+  Queeries001: {
+    name: "Harm Reduction Tent",
+    description: `Harm Reduction now has a dedicated location for you to do spectrometer testing on Wednesday & Thursday, reagent testing, and to pick up safer sex and safer usage kits.`,
+    category: "Health & Wellness",
+    markerType: "wellness",
     offset: [-0.25, -0.25, -0.25],
     scale: 0.75,
   },
