@@ -217,6 +217,21 @@ export default function App() {
     );
   }, []);
 
+  const backgroundTexture = useMemo(() => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 2;
+    canvas.height = 1;
+    const ctx = canvas.getContext("2d")!;
+    const gradient = ctx.createLinearGradient(0, 0, 2, 0);
+    gradient.addColorStop(0, "#ffc6df");
+    gradient.addColorStop(1, "#60b9fc");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 2, 1);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace; // add this
+    return texture;
+  }, []);
+
   return (
     <>
       {!started ? (
@@ -351,7 +366,9 @@ export default function App() {
             }}
             shadows="soft"
           >
-            <color attach="background" args={["#e1e1e1"]} />
+            {/*<color attach="background" args={["#e1e1e1"]} />*/}
+            <primitive object={backgroundTexture} attach="background" />
+
             <ambientLight intensity={0.35} color="#fff8e7" />
             <KeyLight />
             <FillLight />
