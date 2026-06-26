@@ -10,7 +10,7 @@ export default function LoadingScreen() {
       style={{
         position: "fixed",
         inset: 0,
-        background: "#e1e1e1",
+        background: "linear-gradient(to right, #ffc6df,  #60b9fc)",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
