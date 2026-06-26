@@ -151,7 +151,7 @@ export const MARKER_DATA: Record<
     description: "",
     category: "Camping & Lodging",
     markerType: "artist_bunk",
-    offset: [0, 2.5, -1],
+    offset: [0, 2.5, 0],
     scale: 1,
   },
   QFF: {
@@ -177,7 +177,7 @@ export const MARKER_DATA: Record<
     description: `Our "Ride Cher" service is on hand to provide shuttle service within Main Camp for mobility impaired attendees who have picked up a wristband from our Wellness tent. If you need help getting around, grab a wristband and grab a ride!`,
     category: "Ride Cher",
     markerType: "cher_rides",
-    offset: [0, -1, 0],
+    offset: [0, -1.5, 0],
     scale: 0.75,
   },
   Food_Court_Drop: {
@@ -339,7 +339,7 @@ export const MARKER_DATA: Record<
     description: `The Food Court is the place for Meal Plan holders to pick up their meals each day. Brunch hours are 9am-1pm, Dinner hours are 4-8pm. Limited A la Carte meals from the plan are sold at Pick-Me-Ups at the beginning of each meal period.`,
     category: "Amenities",
     markerType: "food_court",
-    offset: [0, -0.25, -0.5],
+    offset: [0, -0.25, 0],
     scale: 0.75,
   },
   Group_Shower: {
@@ -355,7 +355,7 @@ export const MARKER_DATA: Record<
     description: "",
     category: "Amenities",
     markerType: "kitchen",
-    offset: [-0.5, -0.5, 0.75],
+    offset: [0.25, -0.5, -0.25],
     scale: 0.75,
   },
   Kitchen001: {
@@ -363,7 +363,7 @@ export const MARKER_DATA: Record<
     description: "",
     category: "Amenities",
     markerType: "kitchen",
-    offset: [0, 2, 0],
+    offset: [0, 2, 0.2],
     scale: 0.75,
   },
   Large_Shower: {
@@ -387,7 +387,7 @@ export const MARKER_DATA: Record<
     description: `Pick-Me-Ups! is Honcho's curated Coffee & General shop stocked with everything you need from a la carte meals & snacks, to cocktails, other beverages, toiletries, ice, firewood and more. You can also charge your phone here.`,
     category: "Amenities",
     markerType: "pick_me_up",
-    offset: [0, 0, 0],
+    offset: [0, 0, -0.5],
     scale: 0.75,
   },
   Critters_Cafe: {
@@ -439,7 +439,7 @@ export const MARKER_DATA: Record<
     description: `The Library is a new addition to Campout, acting as a "third space" for folks looking to relax and engage in queer community at a slower speed. It also serves as a Sober Space meetup location. You'll find all types of essential queer literature – from activism to afrofuturism, ecology, and even vintage porn mags. It also offers intimate once-daily talks, readings and workshops related to literature we'll have on hand.`,
     category: "Health & Wellness",
     markerType: "sober_space",
-    offset: [0, -0.5, 0],
+    offset: [-0.25, -0.5, 0],
     scale: 0.75,
   },
   Sober_Space_Meadow: {
