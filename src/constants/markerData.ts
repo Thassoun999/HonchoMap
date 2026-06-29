@@ -418,7 +418,7 @@ export const MARKER_DATA: Record<
   },
   Hemlock_Hole: {
     name: "Hemlock Hole",
-    description: `Located in Main Camp next to the swimming hole, Hemlock Hole runs for nearly 20 hours a day. By day, it's sunny & rowdy DJ sets, transitioning into "Hemlock Nights" late night on Friday and Saturday. Running until morning, these weekend sessions offer lower-BPM, melodic grooves curated as a chilled-out alternative to the high-energy club vibe of The Grove.`,
+    description: `Hemlock Hole runs for nearly 20 hours a day. By day, it's sunny & rowdy DJ sets, transitioning into "Hemlock Nights" late night on Friday and Saturday. Running until morning, these weekend sessions offer lower-BPM, melodic grooves curated as a chilled-out alternative to the high-energy club vibe of The Grove.`,
     category: "Stages",
     markerType: "hemlock_hole",
     offset: [1, 1, -0.5],
@@ -436,7 +436,7 @@ export const MARKER_DATA: Record<
   // Health & Wellness
   Sober_Space_Library: {
     name: "Library - Sober Space",
-    description: `The Library is a new addition to Campout, acting as a "third space" for folks looking to relax and engage in queer community at a slower speed. It also serves as a Sober Space meetup location. You'll find all types of essential queer literature – from activism to afrofuturism, ecology, and even vintage porn mags. It also offers intimate once-daily talks, readings and workshops related to literature we'll have on hand.`,
+    description: `Our newest addition to Campout, acting as a Sober Space and "third space" for folks looking to relax and engage in queer community at a slower speed. You'll find all types of essential queer literature from activism to afrofuturism, ecology, and even vintage porn mags. It also offers intimate daily talks, readings and workshops related to literature we'll have on hand.`,
     category: "Health & Wellness",
     markerType: "sober_space",
     offset: [-0.25, -0.5, 0],
@@ -444,7 +444,7 @@ export const MARKER_DATA: Record<
   },
   Sober_Space_Meadow: {
     name: "Meadow - Sober Space",
-    description: `Sober folks, people in recovery, or anyone on the substance-free spectrum: check out the sober spaces for twice-daily meetings, mutual support, and bulletin boards to make connections. Enjoy your first or tenth sober Honcho! Meeting info is posted at both the sober spaces and Queeries. For more information, please reach out to chance.krempasky@gmail.com`,
+    description: `Sober folks, people in recovery, or anyone on the substance-free spectrum: check out the sober spaces for twice-daily meetings, mutual support, and bulletin boards to make connections. Meeting info is posted at both the sober spaces and Queeries. For more information, please reach out to chance.krempasky@gmail.com`,
     category: "Health & Wellness",
     markerType: "sober_space",
     offset: [-0.5, 0, 0.25],
