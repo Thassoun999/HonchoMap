@@ -1,3 +1,5 @@
+import { useRef, useEffect } from "react";
+
 interface BurgerMenuProps {
   categories: string[];
   activeFilters: string[];
@@ -13,8 +15,27 @@ export default function BurgerMenu({
   isOpen,
   onToggleMenu,
 }: BurgerMenuProps) {
+  const containerRef = useRef<HTMLDivElement>(null); // CHANGED: added containerRef
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
+        onToggleMenu();
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [isOpen, onToggleMenu]);
   return (
     <div
+      ref={containerRef}
       style={{ zIndex: 200 }}
       onKeyDown={(e) => {
         if (e.key === "Escape" && isOpen) onToggleMenu();
