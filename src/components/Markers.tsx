@@ -36,6 +36,22 @@ const MARKER_SPRITES: Record<string, string> = {
   salvage: "/HonchoMap/assets/markers/Salvage.png",
 };
 
+// Generate a soft yellow glow circle texture procedurally
+const glowTexture = (() => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 64;
+  canvas.height = 64;
+  const ctx = canvas.getContext("2d")!;
+  const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+  gradient.addColorStop(0, "rgba(255, 240, 0, 0.9)"); // bright yellow center
+  gradient.addColorStop(0.7, "rgba(255, 210, 0, 0.7)"); // mid falloff
+  gradient.addColorStop(1, "rgba(255, 180, 0, 0)"); // transparent edge
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 64, 64);
+  const texture = new THREE.CanvasTexture(canvas);
+  return texture;
+})();
+
 // Remove LARGE_MARKERS — scale now comes from MARKER_DATA
 
 const BASE_WIDTH = 2.25; // was  3
@@ -58,6 +74,7 @@ interface SingleMarkerProps {
   scale: number;
   texture: THREE.Texture;
   onClick: () => void;
+  isActive: boolean;
 }
 
 function SingleMarker({
@@ -66,9 +83,11 @@ function SingleMarker({
   scale,
   texture,
   onClick,
+  isActive,
 }: SingleMarkerProps) {
   const spriteRef = useRef<THREE.Sprite>(null!);
   const hovered = useRef(false);
+  const glowRef = useRef<THREE.Sprite>(null!);
 
   useFrame(() => {
     if (!spriteRef.current) return;
@@ -78,6 +97,15 @@ function SingleMarker({
       target,
       0.15,
     );
+
+    // Glow opacity — fade in when active, fade out when not
+    if (glowRef.current) {
+      glowRef.current.material.opacity = THREE.MathUtils.lerp(
+        glowRef.current.material.opacity,
+        isActive ? 1.0 : 0.0,
+        0.1,
+      );
+    }
   });
 
   const width = BASE_WIDTH * scale;
@@ -90,32 +118,49 @@ function SingleMarker({
   ];
 
   return (
-    <sprite
-      ref={spriteRef}
-      position={finalPosition}
-      scale={[width, height, 1]}
-      onClick={(e) => {
-        e.stopPropagation();
-        onClick();
-      }}
-      onPointerOver={(e) => {
-        e.stopPropagation();
-        document.body.style.cursor = "pointer";
-        hovered.current = true;
-      }}
-      onPointerOut={() => {
-        document.body.style.cursor = "default";
-        hovered.current = false;
-      }}
-    >
-      <spriteMaterial
-        map={texture}
-        transparent={true}
-        depthWrite={false}
-        sizeAttenuation={true}
-        opacity={1}
-      />
-    </sprite>
+    <>
+      {/* Glow sprite — behind the marker */}
+      <sprite
+        ref={glowRef}
+        position={finalPosition}
+        scale={[width * 1.8, height * 1.8, 1]} // larger than marker
+      >
+        <spriteMaterial
+          map={glowTexture}
+          transparent={true}
+          depthWrite={false}
+          sizeAttenuation={true}
+          opacity={0} // starts invisible, lerps to 1 when active
+        />
+      </sprite>
+
+      <sprite
+        ref={spriteRef}
+        position={finalPosition}
+        scale={[width, height, 1]}
+        onClick={(e) => {
+          e.stopPropagation();
+          onClick();
+        }}
+        onPointerOver={(e) => {
+          e.stopPropagation();
+          document.body.style.cursor = "pointer";
+          hovered.current = true;
+        }}
+        onPointerOut={() => {
+          document.body.style.cursor = "default";
+          hovered.current = false;
+        }}
+      >
+        <spriteMaterial
+          map={texture}
+          transparent={true}
+          depthWrite={false}
+          sizeAttenuation={true}
+          opacity={1}
+        />
+      </sprite>
+    </>
   );
 }
 
@@ -129,6 +174,7 @@ interface MarkersProps {
     description: string;
     category: string;
   }) => void;
+  activeMarkerId: string | null;
 }
 
 export default function Markers({
@@ -136,6 +182,7 @@ export default function Markers({
   visibleMarkerIds,
   onMarkerClick,
   markerPositionsRef,
+  activeMarkerId,
 }: MarkersProps) {
   const markerData = useMemo(() => {
     const result: MarkerData[] = [];
@@ -187,6 +234,7 @@ export default function Markers({
           offset={marker.offset}
           scale={marker.scale}
           texture={textures[marker.markerType]}
+          isActive={marker.id === activeMarkerId}
           onClick={() =>
             onMarkerClick({
               id: marker.id,

@@ -22,12 +22,14 @@ interface MapSceneProps {
   }) => void;
   visibleMarkerIds: string[];
   markerPositionsRef: React.RefObject<Record<string, THREE.Vector3>>;
+  activeMarkerId: string | null;
 }
 
 export default function MapScene({
   onMarkerClick,
   visibleMarkerIds,
   markerPositionsRef,
+  activeMarkerId,
 }: MapSceneProps) {
   const { scene } = useGLTF("/HonchoMap/assets/models/map_scene.glb");
 
@@ -168,6 +170,7 @@ export default function MapScene({
         onMarkerClick={onMarkerClick}
         visibleMarkerIds={visibleMarkerIds}
         markerPositionsRef={markerPositionsRef}
+        activeMarkerId={activeMarkerId}
       />
     </>
   );

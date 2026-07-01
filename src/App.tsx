@@ -404,6 +404,7 @@ export default function App() {
             <RimLight />
 
             <OrbitControls
+              zoomToCursor={true}
               enableDamping={true}
               dampingFactor={0.05} // lower = more smoothing, higher = snappier
               enablePan={true}
@@ -426,6 +427,7 @@ export default function App() {
                 onMarkerClick={handleMarkerClick}
                 visibleMarkerIds={visibleMarkerIds}
                 markerPositionsRef={markerPositionsRef}
+                activeMarkerId={activeMarker?.id ?? null}
               />
             </Suspense>
             {/* Post processing — always last inside Canvas */}
