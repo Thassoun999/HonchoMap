@@ -115,7 +115,7 @@ export const MARKER_DATA: Record<
     scale: 1,
   },
   Accessibility_Camping_Spot001: {
-    name: "Accessibility Camping Spot",
+    name: "Camp ASL & Accessibility Camping Spot",
     description: "",
     category: "Camping & Lodging",
     markerType: "accessibility",
